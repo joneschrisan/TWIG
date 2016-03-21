@@ -1,0 +1,7 @@
+{
+	"name"			: "hashKey2Name",
+	"description"	: "Converts the hash key to a readable name",
+	"author"		: "Chris CJ Jones",
+	"version"		: "1.0.00",
+	"licence"		: "MIT"
+}

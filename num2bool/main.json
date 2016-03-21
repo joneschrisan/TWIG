@@ -1,0 +1,7 @@
+{
+	"name"			: "num2bool",
+	"description"	: "Converts numbers to boolean values",
+	"author"		: "Chris CJ Jones",
+	"version"		: "1.0.00",
+	"licence"		: "MIT"
+}

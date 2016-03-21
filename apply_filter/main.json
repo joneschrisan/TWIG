@@ -1,0 +1,7 @@
+{
+	"name"			: "apply_filter",
+	"description"	: "Dynamically applies the filter specified. Work in progress.",
+	"author"		: "Chris CJ Jones",
+	"version"		: "0.0.01",
+	"licence"		: "MIT"
+}
