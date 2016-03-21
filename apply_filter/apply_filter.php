@@ -1,9 +1,16 @@
 <?php
 
-$apply_filter = new Twig_SimpleFilter('apply_filter', function($filter) {
-	return $filter;
-});
-
-$twig->addFilter($apply_filter);
+class apply_filter extends twig_extention {
+	
+	protected $extention_list = array("apply_filter");
+	
+	public function __construct(&$twig) {
+		parent::__construct($twig);
+	}
+	
+	public function apply_filter($filter) {
+		return $filter;
+	}
+}
 
 ?>

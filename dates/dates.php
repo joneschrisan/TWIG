@@ -1,54 +1,49 @@
 <?php
 
-function format_date($date, $format) {
-	$d = new DateTime($date);
-	return $d->format($format);
-}
-
-$filter_date_sql = new Twig_SimpleFilter(
-	"dateSQL",
-	function($date) {
+class dates extends twig_extention {
+	
+	protected $extention_list = array(
+		"dateSQL",
+		"datetimeSQL",
+		"dateUSA",
+		"datetimeUSA",
+		"dateUK",
+		"datetimeUK"
+	);
+	
+	public function __construct(&$twig) {
+		parent::__construct($twig);
+	}
+	
+	public function dateSQL($date) {
 		return $date ? format_date($date, "Y-m-d") : null;
 	}
-);
-$filter_datetime_sql = new Twig_SimpleFilter(
-	"dateSQL",
-	function($date) {
+	
+	public function datetimeSQL($date) {
 		return $date ? format_date($date, "Y-m-d H:i:s") : null;
 	}
-);
-
-$filter_date_usa = new Twig_SimpleFilter(
-	"dateUSA",
-	function($date) {
+	
+	public function dateUSA($date) {
 		return $date ? format_date($date, "m/d/Y") : null;
 	}
-);
-$filter_datetime_usa = new Twig_SimpleFilter(
-	"dateSQL",
-	function($date) {
+	
+	public function datetimeUSA($date) {
 		return $date ? format_date($date, "m/d/Y H:i:s") : null;
 	}
-);
-
-$filter_date_uk = new Twig_SimpleFilter(
-	"dateUK",
-	function($date) {
+	
+	public function dateUK($date) {
 		return $date ? format_date($date, "d/m/Y") : null;
 	}
-);
-$filter_datetime_uk = new Twig_SimpleFilter(
-	"dateSQL",
-	function($date) {
+	
+	public function datetimeUK($date) {
 		return $date ? format_date($date, "d/m/Y H:i:s") : null;
 	}
-);
-
-$twig->addFilter($filter_date_sql);
-$twig->addFilter($filter_datetime_sql);
-$twig->addFilter($filter_date_usa);
-$twig->addFilter($filter_datetime_usa);
-$twig->addFilter($filter_date_uk);
-$twig->addFilter($filter_datetime_uk);
+	
+	private function format_date($date, $format) {
+		$d = new DateTime($date);
+		return $d->format($format);
+	}
+	
+}
 
 ?>

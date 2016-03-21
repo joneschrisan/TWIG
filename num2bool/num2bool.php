@@ -1,50 +1,54 @@
 <?php
 
-define("num2boolTrueFalse", 2);
-define("num2boolTickCross", 4);
-define("num2boolYesNo",		8);
-define("num2boolText",		16);
-define("num2boolUCFirst",	32);
-
-$num2bool = new Twig_SimpleFilter(
-	"num2bool",
-	function($num, $type = 4) {
+class dates extends twig_extention {
+	
+	const TrueFalse	= 2;
+	const TickCross	= 4;
+	const YesNo		= 8;
+	const Text		= 16;
+	const UCFirst	= 32;
+	
+	protected $extention_list = array("hashKey2name");
+	
+	public function __construct(&$twig) {
+		parent::__construct($twig);
+	}
+	
+	public function num2bool($num, $type = 4) {
 		$out = num;
-		if ((pow(2, 1) & $type) == pow(2, 1)) {
+		if ($this->has_bit($type, 1)) {
 			if ($out == 1) {
 				$out = true;
 			} else {
 				$out = false;
 			}
 		}
-		if ((pow(2, 2) & $type) == pow(2, 2)) {
+		if ($this->has_bit($type, 2)) {
 			if ($out == 1) {
 				$out = "<span class=\"glyphicon glyphicon-ok\"></span>";
 			} else {
 				$out = "<span class=\"glyphicon glyphicon-remove\"></span>";
 			}
 		}
-		if ((pow(2, 3) & $type) == pow(2, 3)) {
+		if ($this->has_bit($type, 3)) {
 			if ($out == 1) {
 				$out = "yes";
 			} else {
 				$out = "no";
 			}
 		}
-		if ((pow(2, 4) & $type) == pow(2, 4)) {
+		if ($this->has_bit($type, 4)) {
 			if ($out == 1 || $out == true) {
 				$out = "true";
 			} else {
 				$out = "false";
 			}
 		}
-		if ((pow(2, 5) & $type) == pow(2, 5)) {
+		if ($this->has_bit($type, 5)) {
 			$out = ucfirst($out);
 		}
 		return $out;
 	}
-);
-
-$twig->addFilter($num2bool);
+}
 
 ?>
