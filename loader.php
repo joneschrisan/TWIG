@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . DIRECTORY_SEPARATOR . "twig_extention.php");
 
-class load_twig_extentions {
+class loader {
 	protected $extentions = array();
 	protected $twig = null;
 	
